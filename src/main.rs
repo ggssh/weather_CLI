@@ -3,13 +3,14 @@ use exitfailure::ExitFailure;
 use reqwest::Url;
 use serde_derive::{Deserialize, Serialize};
 use structopt::StructOpt;
+use dotenv_codegen::dotenv;
 
 // mod tools;
 
-#[derive(StructOpt)]
-struct Input {
-    city: String,
-}
+// #[derive(StructOpt)]
+// struct Input {
+//     city: String,
+// }
 
 #[derive(Serialize, Deserialize, Debug)]
 struct Coord {
@@ -51,8 +52,9 @@ impl W {
     async fn get(city: &String) -> Result<Self, ExitFailure> {
         let url = format!(
             "https://api.openweathermap.org/data/2.5/weather?q={}
-        &appid=3c0cf4a46a0856f5e0e9958bed9c1206",
-            city
+        &appid={}",
+            city,
+            dotenv!("appid")
         );
         let url = Url::parse(&*url)?;
         let resp = reqwest::get(url).await?.json::<W>().await?;

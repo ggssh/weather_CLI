@@ -1,13 +1,13 @@
-.PHONY: clean build install
+.PHONY: clean build-d install
 
-run: clean build
-	target/release/weather_CLI --city=Beijing
+run: clean build-d
+	target/debug/weather_CLI --city=Beijing
 
 clean:
 	cargo clean
 
-build:
-	cargo build --release
+build-d:
+	cargo build 
 
 test:
 	@target/release/weather_CLI --city=Qinhuangdao
