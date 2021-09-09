@@ -1,0 +1,37 @@
+name: weather_CLI
+version: "1.0"
+author: ggssh <to@ggssh.com>
+about: Get something about weather
+args:
+    - setting:
+        short: s
+        long: set
+        value_name: FILE
+        help: Sets a custom config file
+        takes_value: true
+    - INPUT:
+        help: Sets the input file to use
+        required: false
+        index: 1
+    - verbose:
+        short: v
+        multiple: true
+        help: Sets the level of verbosity
+    - city:
+        short: c
+        long: city
+        value_name: City
+        takes_value: true
+        help: Sets the city
+subcommands:
+    - test:
+        about: controls testing features
+        version: "1.3"
+        author: Someone E. <someone_else@other.com>
+        args:
+            - debug:
+                short: d
+                help: print debug information
+            - release:
+                short: r
+                help: set the mode of project
