@@ -9,6 +9,8 @@ async fn main() -> Result<(), ExitFailure> {
 
     let input_city = m.value_of("city").unwrap_or("Beijing").to_string();
     let resp = W::get(&input_city).await?;
-    println!("weather : {}", resp.weather.details.description);
+    // println!("{:#?}",resp);
+    println!("weather : {}🥶", resp.weather.details.description);
+    println!("location: {}🤣 , {}😋",resp.coord.lon,resp.coord.lat);
     Ok(())
 }
